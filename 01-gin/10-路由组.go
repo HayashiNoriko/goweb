@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+func main10() {
 	r := gin.Default()
 
 	// 习惯性一对{}包裹同组的路由，这只是为了看着清晰，但用不用{}包裹功能上没什么区别

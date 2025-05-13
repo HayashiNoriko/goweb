@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"log"
 	"time"
 
@@ -16,9 +17,13 @@ func StatCost() gin.HandlerFunc {
 		// 可以通过c.Set在请求上下文中设置值，后续的处理函数能够取到该值
 		c.Set("name", "zhangsan")
 
-		// 处理请求【阻塞，直到 Gin 完成所有请求处理（包括生成响应数据）】
-		// 也就是等待 c.JSON()、c.String()、c.HTML() 等响应方法
+		fmt.Println("test1")
+		// 放行，让请求继续往下走
+		// 去其他中间件
+		// 以及去 gin 响应，即  c.JSON()、c.String()、c.HTML()） 等
 		c.Next()
+
+		fmt.Println("test4")
 
 		// 处理响应
 		cost := time.Since(start)
@@ -51,12 +56,15 @@ func BodyLog() gin.HandlerFunc {
 
 		// 使用我们自定义的类型替换默认的
 		c.Writer = blw
+		fmt.Println("test2")
 		log.Println("Next 之前的响应体：", blw.body.String()) // 这里输出空字符串，因为还没有执行业务逻辑、生成响应体
 
 		// 阻塞等待执行业务处理函数
 		// 它们最终都会调用 c.Writer.Write() 方法
 		// 我们通过替换 c.Writer 拦截了这个调用过程
 		c.Next()
+
+		fmt.Println("test3")
 
 		// 事后按需记录返回的响应
 		log.Println("响应体：", blw.body.String())

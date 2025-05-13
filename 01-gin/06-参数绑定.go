@@ -12,7 +12,7 @@ type Login struct {
 	Password string `form:"password" json:"password" binding:"required"`
 }
 
-func main() {
+func main6() {
 	r := gin.Default()
 
 	// 1. 绑定 JSON

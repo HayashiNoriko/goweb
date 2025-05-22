@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main3() {
 	rdb, ctx := initRedis()
 	defer rdb.Close()
 

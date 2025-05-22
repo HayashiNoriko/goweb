@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+func main0() {
 	// 1.创建一个默认的路由引擎
 	r := gin.Default()
 

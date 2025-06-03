@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func main9() {
 	rdb, ctx := initRedis()
 	defer rdb.Close()
 
@@ -23,6 +23,7 @@ func main() {
 	}
 
 	// 执行脚本
+	// 第四个参数 args 是变长参数。这样调用更灵活，写法更简洁
 	_, err = rdb.EvalSha(ctx, sha, []string{"luakey"}, "luavalue...").Result()
 	if err != nil {
 		fmt.Println(err)

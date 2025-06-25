@@ -8,7 +8,7 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-func main1() {
+func main12() {
 	ctx := context.Background()
 
 	rdb := redis.NewClusterClient(&redis.ClusterOptions{
